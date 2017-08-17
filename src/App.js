@@ -2,7 +2,33 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const IncomeSpend = ({header = 'Your Income & Spend'}) => {
+const model = {
+  annualSalary: {
+    value: 1000,
+    fromAge: 18,
+    toAge: 65
+  },
+
+  mortgage: {
+    value: 1000,
+    fromAge: 18,
+    toAge: 65
+  },
+
+  bills: {
+    value: 1000,
+    fromAge: 18,
+    toAge: 65
+  },
+
+  generalSpending: {
+    value: 1000,
+    fromAge: 18,
+    toAge: 65
+  }
+}
+
+const IncomeSpend = ({header = 'Your Income & Spend', model}) => {
   return (
       <div className="income-spend-outer">
 
@@ -14,35 +40,35 @@ const IncomeSpend = ({header = 'Your Income & Spend'}) => {
           <h2>Annual income</h2>
         </div>
 
-        <Inputs />
+        <Inputs inputText="Annual salary:" data={model.annualSalary}/>
 
-        <div className="monthly-spending">
+        <div className="monthly-spending-subheading">
           <h2>Monthly spending</h2>
         </div>
 
-        <Inputs />
-        <Inputs />
-        <Inputs />
+        <Inputs inputText="Mortgage:" data={model.mortgage}/>
+        <Inputs inputText="Bills:" data={model.bills}/>
+        <Inputs inputText="General spending:" data={model.generalSpending}/>
       </div>
     )
 }
 
-const Inputs = () => {
+const Inputs = ({inputText, data}) => {
   return (
     <div className="inputs">
-      <div className="annual-salary">
-        Annual salary:
-        <input type="text" name="annual-salary" />
+      <div className="first-input">
+        <label>{inputText}</label>
+        <input type="text" name="annual-salary" value={data.value}/>
       </div>
 
       <div className="from-age">
-        From age:
-        <input type="text" name="from-age" />
+        <label>From age:</label>
+        <input type="text" name="from-age" value={data.fromAge}/>
       </div>
 
       <div className="to-age">
-        To age:
-        <input type="text" name="to-age" />
+        <label>To age:</label>
+        <input type="text" name="to-age" value={data.toAge}/>
       </div>
     </div>
   )
@@ -50,10 +76,15 @@ const Inputs = () => {
 
 
 class App extends Component {
+  constructor (props){
+    super(props);
+    this.state = {model}
+  }
+
   render() {
     return (
       <div className="App">
-        <IncomeSpend />
+        <IncomeSpend model={this.state.model}/>
       </div>
     );
   }
