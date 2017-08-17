@@ -22,3 +22,60 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.income-spend-outer {
+  width: 400px;
+  border: 1px solid #88B6BF;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.income-spend-header {
+  background-color: #00586C;
+  color: #FFFFFF;
+}
+
+.income-spend-header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.annual-income-subheading {
+  color: #0D7658;
+}
+
+.monthly-spending-subheading {
+  color: #0D7658;
+}
+
+.first-input {
+  width: 120px;
+}
+
+.first-input input {
+  width: 80px;
+}
+
+.from-age {
+  width: 100px;
+}
+
+.from-age input {
+  width: 60px;
+}
+
+.to-age {
+  width: 100px;
+}
+
+.to-age input {
+  width: 60px;
+}
+
+.inputs label {
+  display: block;
+}
+
+.inputs {
+  display: flex;
+}
